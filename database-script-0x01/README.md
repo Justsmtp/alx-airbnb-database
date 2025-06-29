@@ -22,9 +22,3 @@ This directory contains the SQL DDL script for the normalized schema of the ALX 
 - Adds `CHECK` constraints on `price`, `total_amount`, and `rating`.
 - Adds indexes to optimize frequent lookup queries.
 
-## 🚀 Usage
-
-Run the schema creation script with your database client:
-
-```bash
-psql -U <Coddy> -d <mork_sql> -f schema.sql
