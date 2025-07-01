@@ -19,7 +19,8 @@ SELECT
     reviews.review_text,
     reviews.rating
 FROM properties
-LEFT JOIN reviews ON properties.property_id = reviews.property_id;
+LEFT JOIN reviews ON properties.property_id = reviews.property_id
+ORDER BY properties.property_id;
 
 
 -- FULL OUTER JOIN (emulated with UNION of LEFT and RIGHT JOINs): Retrieve all users and all bookings,
