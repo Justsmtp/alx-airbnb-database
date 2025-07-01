@@ -17,7 +17,9 @@ SELECT
 FROM bookings
 INNER JOIN users ON bookings.user_id = users.user_id
 INNER JOIN properties ON bookings.property_id = properties.property_id
-INNER JOIN payments ON bookings.booking_id = payments.booking_id;
+INNER JOIN payments ON bookings.booking_id = payments.booking_id
+WHERE bookings.booking_id IS NOT NULL
+AND users.user_id IS NOT NULL;
 
 -- Analyze performance
 EXPLAIN ANALYZE
@@ -37,7 +39,9 @@ SELECT
 FROM bookings
 INNER JOIN users ON bookings.user_id = users.user_id
 INNER JOIN properties ON bookings.property_id = properties.property_id
-INNER JOIN payments ON bookings.booking_id = payments.booking_id;
+INNER JOIN payments ON bookings.booking_id = payments.booking_id
+WHERE bookings.booking_id IS NOT NULL
+AND users.user_id IS NOT NULL;
 
 -- Refactored optimized query:
 -- Only include necessary columns, use proper indexes, and avoid extra joins if possible
@@ -58,4 +62,6 @@ SELECT
 FROM bookings AS b
 JOIN users AS u ON b.user_id = u.user_id
 JOIN properties AS p ON b.property_id = p.property_id
-JOIN payments AS pay ON b.booking_id = pay.booking_id;
+JOIN payments AS pay ON b.booking_id = pay.booking_id
+WHERE b.booking_id IS NOT NULL
+AND u.user_id IS NOT NULL;
